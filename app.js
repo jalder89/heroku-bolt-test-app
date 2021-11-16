@@ -24,6 +24,7 @@ app.event('app_home_opened', async ({ event, client }) => {
   try {
     const result = await client.chat.postMessage({
       channel: event.channel,
+      text: "Hey there!",
       blocks: [{
         "type": "section",
         "text": {
