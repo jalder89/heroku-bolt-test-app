@@ -15,8 +15,7 @@ This avoids the R10 timeout for port binding, but then routing is broken.
 // Initializes your app with your bot token and app token
 const app = new App({
   token: process.env.SLACK_BOT_TOKEN,
-  signingSecret: process.env.SLACK_SIGNING_SECRET,
-  port: process.env.PORT
+  signingSecret: process.env.SLACK_SIGNING_SECRET
 });
 
 // Listens to incoming messages that contain "hello"
@@ -52,7 +51,7 @@ app.action('button_click', async ({ body, ack, say }) => {
 
 (async () => {
   // Start your app
-  await app.start(process.env.PORT || 3000);
+  await app.start(Number(process.env.PORT) || 3000);
 
   console.log('⚡️ Bolt app is running! ' + process.env.PORT);
 })();
