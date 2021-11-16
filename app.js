@@ -77,7 +77,7 @@ app.action('greet_button1', async ({ body, client, ack }) => {
   await ack();
   await console.log(body.channel.id)
   await client.chat.postMessage({
-    channel: body.channel_id,
+    channel: body.channel.id,
     text: "Wave",
     blocks: {
       "type": "section",
