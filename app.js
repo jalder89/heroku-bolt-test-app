@@ -10,7 +10,7 @@ Calling tools.startListener will start a HTTP web server listening on 5000.
 This avoids the R10 timeout for port binding, but then routing is broken.
 */
 
-// tools.startListener();
+tools.startListener();
 
 // Initializes your app with your bot token and app token
 const app = new App({

@@ -1,7 +1,7 @@
 const http = require('http');
 
 const startListener = () => {
-    handle = (req, res) => res.end("hit")
+    handle = (req, res) => console.log(req)
     server = http.createServer(handle)
     server.listen(proccess.env.PORT || 5000) 
 };
