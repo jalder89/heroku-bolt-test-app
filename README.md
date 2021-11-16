@@ -3,8 +3,11 @@
 
 ## Overview
 
-This is a Slack app built with the [Bolt for JavaScript framework][2] that showcases
-responding to events and interactive buttons.
+This sample slack application has been adapted to use HTTP 
+instead of Socket Mode and show an issue with hosting bolt on Heroku. Heroku fails to bind the port even though it is generate and assigned to env var.
+
+Calling tools.startListener will start a HTTP web server listening on 5000.
+This avoids the R10 timeout for port binding, but then routing is broken.
 
 ## Running locally
 

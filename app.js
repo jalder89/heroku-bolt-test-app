@@ -1,10 +1,16 @@
+const tools = require('./tools.js')
 const { App } = require('@slack/bolt');
 
 /* 
-This sample slack application uses SocketMode
-For the companion getting started setup guide, 
-see: https://slack.dev/bolt-js/tutorial/getting-started 
+This sample slack application has been adapted to use HTTP 
+instead of Socket Mode. However, Heroku fails to bind
+the port even though it is generate and assigned to env var.
+
+Calling tools.startListener will start a HTTP web server listening on 5000.
+This avoids the R10 timeout for port binding, but then routing is broken.
 */
+
+// tools.startListener();
 
 // Initializes your app with your bot token and app token
 const app = new App({
