@@ -1,5 +1,5 @@
 const tools = require('./tools.js')
-const { App } = require('@slack/bolt');
+const { App, LogLevel } = require('@slack/bolt');
 
 /* 
 This sample slack application has been adapted to use HTTP 
@@ -16,6 +16,7 @@ This avoids the R10 timeout for port binding, but then routing is broken.
 const app = new App({
   token: process.env.SLACK_BOT_TOKEN,
   signingSecret: process.env.SLACK_SIGNING_SECRET,
+  logLevel: LogLevel.DEBUG,
 });
 
 // Listens to incoming messages that contain "hello"
