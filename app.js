@@ -68,14 +68,14 @@ app.action('greet_button1', async ({ body, client, ack }) => {
   await ack();
   await client.chat.postMessage({
     channel: body.channel_id,
-    text: "Wave",
-    blocks: {
-      "type": "section",
-      "text": {
-        "type": "mrkdwn",
-        "text": ":wave:"
-      }
-    }
+    text: "Wave"
+    // blocks: {
+    //   "type": "section",
+    //   "text": {
+    //     "type": "mrkdwn",
+    //     "text": ":wave:"
+    //   }
+    // }
   });
 });
 
