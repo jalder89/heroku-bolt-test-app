@@ -75,7 +75,6 @@ app.command('/greet', async ({ command, client, ack, respond }) => {
 
 app.action('greet_button1', async ({ body, client, ack }) => {
   await ack();
-  await console.log(body.channel.id)
   await client.chat.postMessage({
     channel: body.channel.id,
     text: "Wave",
