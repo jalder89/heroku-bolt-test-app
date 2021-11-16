@@ -55,10 +55,9 @@ app.command('/greet', async ({ command, client, ack, respond }) => {
       },
       "accessory": {
         "type": "button",
+        "text": "Wave back",
         "style": "primary",
-        "action_id": "greet_button1",
-        "text": "Wave back :wave:",
-        "value": `<@${command.user_id}> waves back`
+        "action_id": "greet_button1"
       }
     }
   });
