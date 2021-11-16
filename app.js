@@ -19,7 +19,7 @@ const app = new App({
   signingSecret: process.env.SLACK_SIGNING_SECRET
 });
 
-app.use(bodyParser.urlencoded({ extended: true }))
+app.use(express.bodyParser.urlencoded({ extended: true }))
 
 // Listens to incoming messages that contain "hello"
 app.event('app_home_opened', async ({ event, client }) => {
