@@ -66,7 +66,7 @@ app.command('/greet', async ({ command, client, ack, respond }) => {
 						"emoji": true
 					},
 					"value": `<@${command.user_id}> waved back`,
-					"action_id": "wave_button1"
+					"action_id": "greet_button1"
 				}
 			]
 		}
