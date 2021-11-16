@@ -79,13 +79,13 @@ app.action('greet_button1', async ({ body, client, ack }) => {
   await client.chat.postMessage({
     channel: body.channel.id,
     text: "Wave",
-    blocks: {
+    blocks: [{
       "type": "section",
       "text": {
         "type": "mrkdwn",
         "text": ":wave:"
       }
-    }
+    }]
   });
 });
 
