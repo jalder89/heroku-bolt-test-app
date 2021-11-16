@@ -1,4 +1,3 @@
-const express = require('express')
 const tools = require('./tools.js')
 const { App, LogLevel } = require('@slack/bolt');
 
@@ -18,8 +17,6 @@ const app = new App({
   token: process.env.SLACK_BOT_TOKEN,
   signingSecret: process.env.SLACK_SIGNING_SECRET
 });
-
-app.use(express.urlencoded({ extended: true }))
 
 // Listens to incoming messages that contain "hello"
 app.event('app_home_opened', async ({ event, client }) => {
@@ -47,7 +44,7 @@ app.event('app_home_opened', async ({ event, client }) => {
 app.command('/greet', async ({ command, ack, respond }) => {
   // Acknowledge the action
   await ack();
-  await respond(`<@${body.user.id}> says hi!`);
+  await respond(`<@${command.user_id}> says hi!`);
 });
 
 (async () => {
