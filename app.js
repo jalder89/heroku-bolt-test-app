@@ -19,34 +19,31 @@ const app = new App({
 });
 
 // Listens to incoming messages that contain "hello"
-app.message('hello', async ({ message, say }) => {
-  // say() sends a message to the channel where the event was triggered
-  await say({
-    blocks: [
-      {
+app.event('app_home_opened', async ({ event, client }) => {
+
+  try {
+    const result = await client.chat.postMessage({
+      channel: event.channel,
+      blocks: [{
         "type": "section",
         "text": {
           "type": "mrkdwn",
-          "text": `Hey there <@${message.user}>!`
-        },
-        "accessory": {
-          "type": "button",
-          "text": {
-            "type": "plain_text",
-            "text": "Click Me"
-          },
-          "action_id": "button_click"
+          "text": "_Hey there!_"
         }
-      }
-    ],
-    text: `Hey there <@${message.user}>!`
-  });
+      }]
+    })
+  }
+
+  catch (error){
+    console.error(error);
+  }
+  
 });
 
-app.action('button_click', async ({ body, ack, say }) => {
+app.command('/greet', async ({ command, ack, respond }) => {
   // Acknowledge the action
   await ack();
-  await say(`<@${body.user.id}> clicked the button`);
+  await respond(`<@${body.user.id}> says hi!`);
 });
 
 (async () => {
