@@ -16,7 +16,7 @@ This avoids the R10 timeout for port binding, but then routing is broken.
 const app = new App({
   token: process.env.SLACK_BOT_TOKEN,
   signingSecret: process.env.SLACK_SIGNING_SECRET,
-  logLevel: LogLevel.DEBUG,
+  port: process.env.PORT
 });
 
 // Listens to incoming messages that contain "hello"
