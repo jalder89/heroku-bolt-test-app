@@ -41,10 +41,42 @@ app.event('app_home_opened', async ({ event, client }) => {
   
 });
 
-app.command('/greet', async ({ command, ack, respond }) => {
+app.command('/greet', async ({ command, client, ack, respond }) => {
   // Acknowledge the action
   await ack();
-  await respond(`<@${command.user_id}> says hi!`);
+  await client.chat.postMessage({
+    channel: command.channel_id,
+    text: "Hey there!",
+    blocks: {
+      "type": "section",
+      "text": {
+        "type": "mrkdwn",
+        "text": `Hey there <@${command.user_id}>!`
+      },
+      "accessory": {
+        "type": "button",
+        "style": "primary",
+        "action_id": "greet_button1",
+        "text": "Wave back :wave:",
+        "value": `<@${command.user_id}> waves back`
+      }
+    }
+  });
+});
+
+app.action('greet_button1', async ({ body, client, ack }) => {
+  await ack();
+  await client.chat.postMessage({
+    channel: body.channel_id,
+    text: "Wave",
+    blocks: {
+      "type": "section",
+      "text": {
+        "type": "mrkdwn",
+        "text": ":wave:"
+      }
+    }
+  });
 });
 
 (async () => {
