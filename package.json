@@ -4,7 +4,8 @@
   "description": "Getting Started ⚡️ Bolt for JavaScript",
   "main": "app.js",
   "engines": {
-    "node": "16.x"
+    "node": "16.x",
+    "npm": "8.x"
   },
   "scripts": {
     "ngrok": "ngrok http 3000",
