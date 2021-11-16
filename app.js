@@ -47,34 +47,44 @@ app.command('/greet', async ({ command, client, ack, respond }) => {
   await client.chat.postMessage({
     channel: command.channel_id,
     text: "Hey there!",
-    blocks: {
+    blocks: [
+      {
       "type": "section",
       "text": {
         "type": "mrkdwn",
         "text": `Hey there <@${command.user_id}>!`
-      },
-      "accessory": {
-        "type": "button",
-        "text": "Wave back",
-        "style": "primary",
-        "action_id": "greet_button1"
       }
-    }
-  });
+    },
+    {
+			"type": "actions",
+			"elements": [
+				{
+					"type": "button",
+					"text": {
+						"type": "plain_text",
+						"text": "Wave Back :wave:",
+						"emoji": true
+					},
+					"value": `<@${command.user_id}> waved back`,
+					"action_id": "wave_button1"
+				}
+			]
+		}
+  ]});
 });
 
 app.action('greet_button1', async ({ body, client, ack }) => {
   await ack();
   await client.chat.postMessage({
     channel: body.channel_id,
-    text: "Wave"
-    // blocks: {
-    //   "type": "section",
-    //   "text": {
-    //     "type": "mrkdwn",
-    //     "text": ":wave:"
-    //   }
-    // }
+    text: "Wave",
+    blocks: {
+      "type": "section",
+      "text": {
+        "type": "mrkdwn",
+        "text": ":wave:"
+      }
+    }
   });
 });
 
